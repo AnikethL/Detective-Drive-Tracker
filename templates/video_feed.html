@@ -1,14 +1,74 @@
-<!-- video_feed.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Video Feed</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .container {
+            text-align: center;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .button-container {
+            display: flex;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+    </style>
 </head>
 <body>
-    <h1>Video Feed</h1>
+    <div class="container">
+        <h1>Video Feed</h1>
 
-    <!-- Display video feed -->
-    <img src="{{ url_for('video_feed') }}" alt="Video Feed">
+        <!-- Display video feed -->
+        <img src="{{ url_for('video_feed_content') }}" alt="Video Feed">
+
+        <!-- Navigation buttons -->
+        <div class="button-container">
+            <form action="/" method="get">
+                <button type="submit">Go to Landing Page</button>
+            </form>
+            <form action="/image_gallery" method="get">
+                <button type="submit">Go to Image Gallery</button>
+            </form>
+        </div>
+    </div>
 </body>
 </html>

@@ -1,22 +1,94 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Landing Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .container {
+            text-align: center;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .mcq-list {
+            list-style-type: none;
+            padding: 0;
+            margin-bottom: 20px;
+        }
+
+        .mcq-list li {
+            margin: 10px 0;
+        }
+
+        .button-container {
+            display: flex;
+            gap: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:disabled {
+            background-color: #a0a0a0;
+            cursor: not-allowed;
+        }
+
+    </style>
 </head>
 <body>
-    <h1>Welcome to the Landing Page</h1>
+    <div class="container">
+        <h1>Detective Drive Tracker</h1>
+        <h3>Connect To</h3>
+        <!-- MCQ Style List -->
+        <ul class="mcq-list" id="mcqList">
+            <li><input type="radio" name="choice" id="option1" onclick="enableButtons()"><label for="option1"> RaspberryPi 1</label></li>
+            <li><input type="radio" name="choice" id="option2" onclick="enableButtons()"><label for="option2"> RaspberryPi 2</label></li>
+            <li><input type="radio" name="choice" id="option3" onclick="enableButtons()"><label for="option3"> RaspberryPi 3</label></li>
+        </ul>
 
-    <!-- Button to navigate to image gallery page -->
-    <form action="/image_gallery" method="get">
-        <button type="submit">Go to Image Gallery</button>
-    </form>
+        <!-- Buttons to navigate to different pages -->
+        <div class="button-container">
+            <form action="/image_gallery" method="get">
+                <button type="submit" id="imageGalleryButton" disabled>Go to Image Gallery</button>
+            </form>
+            <form action="/video_feed" method="get">
+                <button type="submit" id="videoFeedButton" disabled>Go to Video Feed</button>
+            </form>
+        </div>
+    </div>
 
-    <!-- Button to navigate to video feed page -->
-    <form action="/video_feed" method="get">
-        <button type="submit">Go to Video Feed</button>
-    </form>
+    <script>
+        function enableButtons() {
+            document.getElementById('imageGalleryButton').disabled = false;
+            document.getElementById('videoFeedButton').disabled = false;
+        }
+    </script>
 </body>
 </html>
-

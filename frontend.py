@@ -21,6 +21,7 @@ def get_latest_frame():
                 frame = f.read()
             yield (b'--frame\r\n'
                    b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n\r\n')
+            time.sleep(0.1)
         else:
             time.sleep(0.1)  # Wait for a short time if the frame is not yet available
 
@@ -30,8 +31,15 @@ def index():
 
 @app.route('/video_feed')
 def video_feed():
+    # Render the template instead of directly returning the video feed
+    return render_template('video_feed.html')
+
+
+@app.route('/video_feed_content')
+def video_feed_content():
     return Response(get_latest_frame(),
                     mimetype='multipart/x-mixed-replace; boundary=frame')
+
 
 @app.route('/images/<filename>')
 def send_image(filename):

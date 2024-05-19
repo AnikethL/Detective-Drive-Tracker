@@ -1,0 +1,25 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Image Gallery</title>
+</head>
+<body>
+    <h1>Image Gallery</h1>
+
+    <!-- Button to empty the images folder -->
+    <form action="/empty_images_folder" method="post">
+        <button type="submit">Empty Images Folder</button>
+    </form>
+
+    <!-- Display images -->
+    <div class="gallery">
+        {% for image in images %}
+            <div>
+                <img src="{{ url_for('send_image', filename=image) }}" alt="{{ image }}">
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
